@@ -16,7 +16,7 @@ while url_stack:
         tournament_urls.add(url_stack[-1])
         with open("t_urls.txt" , "a") as f:
             f.write(url_stack[-1]+'\n')
-            
+
     try:
         r = urllib.request.urlopen(urljoin(BASE_URL, url_stack[-1]))
     except:
@@ -28,5 +28,5 @@ while url_stack:
     soup = BeautifulSoup(page, 'html.parser')
     for link in soup.find_all('a'):
         url = link.get('href')
-        if url and url.startswith('/') and url not in visited:
+        if url and url.startswith('/') and not url.startswith('/search') url not in visited:
             url_stack.append(url)
