@@ -42,7 +42,11 @@ def extract_tournament_id(s):
 def extract_tournament_name(s):
     title = s.find(id="page-title")
     if title:
-        return title.get_text()
+        return '_'.join(
+            [t for t in title.get_text()
+            .replace('\n','')
+            .replace('\\','')
+            .split(' ') if t])
     return None
 
 with open('t_urls.txt', 'r') as f:
