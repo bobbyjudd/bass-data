@@ -46,6 +46,7 @@ def extract_tournament_name(s):
             [t for t in title.get_text()
             .replace('\n','')
             .replace('\\','')
+            .replace('/', '')
             .split(' ') if t])
     return None
 
